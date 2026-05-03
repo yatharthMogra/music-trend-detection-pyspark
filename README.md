@@ -20,6 +20,7 @@ Run notebooks **in order** on the cluster; each stage reads/writes HDFS under yo
 | 4 | `04_streaming.ipynb` |
 | 5 | `05_model_training.ipynb` |
 | 6 | `06_dashboard.ipynb` |
+| 7 | `07_project_report.ipynb` (architecture & report; no Spark required) |
 
 ## HDFS contract
 
