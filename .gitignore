@@ -1,0 +1,28 @@
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Python
+__pycache__/
+*.py[cod]
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Local data / downloads (raw data lives on HDFS)
+data/
+*.zip
+*.csv
+!**/sample*.csv
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Spark / Hadoop local
+metastore_db/
+derby.log
+spark-warehouse/
