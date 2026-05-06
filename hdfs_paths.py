@@ -1,11 +1,13 @@
 """
-Shared HDFS layout for the Music Trend pipeline (NYU JupyterHub).
+Shared path layout for the Music Trend pipeline.
+Defaults to local filesystem for notebook-friendly PySpark runs.
 Import from notebooks: sys.path.insert(0, os.path.abspath(".")); import hdfs_paths
 """
 import os
 
-USER = os.environ.get("USER", "hdfs")
-BASE = f"hdfs:///user/{USER}/music"
+USER = os.environ.get("USER", "local")
+PROJECT_ROOT = os.path.abspath(os.environ.get("BDCAP_PROJECT_ROOT", "."))
+BASE = os.path.join(PROJECT_ROOT, "data")
 
 RAW_LASTFM = f"{BASE}/raw/lastfm/user_artists.dat"
 RAW_SPOTIFY = f"{BASE}/raw/spotify_charts/charts.csv"
@@ -24,5 +26,5 @@ STREAMING_CHECKPOINT = f"{BASE}/streaming/checkpoint"
 
 MODEL_RF = f"{BASE}/models/rf_model"
 
-# Spark tuning (course cluster)
-SHUFFLE_PARTITIONS = "50"
+# Spark tuning (local-first default)
+SHUFFLE_PARTITIONS = os.environ.get("BDCAP_SHUFFLE_PARTITIONS", "8")
